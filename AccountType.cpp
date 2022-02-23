@@ -3,10 +3,10 @@
 #include <iomanip>
 
 using namespace std;
-class account_type
+class AccountType
 {
 	public:
-	enum type {
+	enum account_type {
 		YOUTH = 'YOUTH',
 		NORMAL = 'NORMAL',
 		SENIOR = 'SENIOR'

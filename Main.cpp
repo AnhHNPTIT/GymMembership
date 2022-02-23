@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string.h>
-#include "menu.cpp"
+#include "Menu.cpp"
 
 using namespace std;
 
 int main(int argc, char** argv) 
 {
-	menu demo;
+	Menu demo;
 	demo.execute();
 }
