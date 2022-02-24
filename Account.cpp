@@ -47,8 +47,8 @@ class Account : public AccountType
             cout << "Forename: " << forename << endl;
             cout << "Address: " << address << endl;
             cout << "Number of months: " << num_of_months << endl;
-            cout << "Amount due: " << amount_due << endl;
-            cout << "Account type: " << type << endl;			
+            cout << "Amount due: " << setprecision(20) << amount_due << endl;
+            cout << "Account type: " << AccountType::get_account_type(type) << endl;			
 		}
 
         float get_amount_due()
@@ -86,16 +86,36 @@ class Account : public AccountType
 			strcpy(account_number, acc_num);
 		}
 
+		void set_surname(char sur[])
+		{
+			strcpy(surname, sur);
+		}
+
+		void set_forename(char fore[])
+		{
+			strcpy(forename, fore);
+		}
+
+		void set_address(char add[])
+		{
+			strcpy(address, add);
+		}
+
+		void set_num_of_months(int num)
+		{
+			num_of_months = num;
+		}
+
 		void write_file()
 		{
-			ofstream file("GymMembership.out",ios::out);
-			file << account_number << "   ";
-			file << surname << "   ";
-            file << forename << "   ";
-            file << address << "   ";
-            file << num_of_months << "   ";
-            file << amount_due << "   ";
-            file << type << endl;
+			ofstream file("GymMembership.out",ios::app);
+			file << account_number << ",";
+			file << surname << ",";
+            file << forename << ",";
+            file << address << ",";
+            file << num_of_months << ",";
+            file << setprecision(20) << amount_due << ",";
+            file << AccountType::get_account_type(type) << endl;
 		}
 };
 
@@ -112,6 +132,10 @@ class YouthAccount : public Account
 		YouthAccount(char acc[], char sur[], char fore[], char add[], int num)
 		{
 			Account::set_account_number(acc);
+			Account::set_surname(sur);
+			Account::set_forename(fore);
+			Account::set_address(add);
+			Account::set_num_of_months(num);
 			cost_per_month = 50000;
 			amount_due = Account::get_amount_due();
 			type = account_type::YOUTH;
@@ -132,6 +156,10 @@ class NormalAccount : public Account
 		NormalAccount(char acc[], char sur[], char fore[], char add[], int num)
 		{
 			Account::set_account_number(acc);
+			Account::set_surname(sur);
+			Account::set_forename(fore);
+			Account::set_address(add);
+			Account::set_num_of_months(num);
 			cost_per_month = 100000;
 			amount_due = Account::get_amount_due();
 			type = account_type::NORMAL;
@@ -152,6 +180,10 @@ class SeniorAccount : public Account
 		SeniorAccount(char acc[], char sur[], char fore[], char add[], int num)
 		{
 			Account::set_account_number(acc);
+			Account::set_surname(sur);
+			Account::set_forename(fore);
+			Account::set_address(add);
+			Account::set_num_of_months(num);
 			cost_per_month = 200000;
 			amount_due = Account::get_amount_due();
 			type = account_type::SENIOR;

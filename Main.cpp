@@ -4,8 +4,10 @@
 
 using namespace std;
 
-int main(int argc, char** argv) 
+int main() 
 {
 	Menu demo;
+	demo.delete_save_file();
 	demo.execute();
+	return 1;
 }
